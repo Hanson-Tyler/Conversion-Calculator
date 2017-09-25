@@ -3,7 +3,9 @@ body{
 	color: black;
 }
 
-
+#links:hover{
+	font-weight: bold;
+}
 
 #books{
 	background-color: DodgerBlue;
