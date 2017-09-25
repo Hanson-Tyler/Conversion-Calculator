@@ -1,0 +1,21 @@
+body{
+	background-color: MediumSeaGreen;
+	color: black;
+}
+
+
+
+#books{
+	background-color: DodgerBlue;
+}
+
+#board{
+	background-color: Gray;
+}
+
+#video{
+	background-color: Tomato;
+}
+h1, h2{
+    border-bottom-style: solid;
+}
