@@ -5,7 +5,7 @@
     <base href="https://aqueous-oasis-32371.herokuapp.com/cart/">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>CS 213 Week 07 Ponder and Prove</title>
-    <link href="cart" type="text/css" rel="stylesheet">
+    <link href="cart.css" type="text/css" rel="stylesheet">
     <script type="text/javascript" src="cart.js?_&amp;d2lSessionVal=kU8r1uIwetqXoBqWnZPboOoDr"></script>
   
   </head>

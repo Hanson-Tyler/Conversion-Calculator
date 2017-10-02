@@ -4,20 +4,10 @@ body{
 	color: Salmon;
 }
 
-form,div{
+form,div, pre{
 	margin-left: 25%;
 	margin-right:25%;
 	width: 50%;
-    font-size: 12; 
-    border: 1px solid rgb(0, 90, 136); 
-    border-radius: 4px;
-    background-color: DarkRed
-}
-
-pre{
-    margin-left: 50%;
-    margin-right:50%;
-    width: 50%;
     font-size: 12; 
     border: 1px solid rgb(0, 90, 136); 
     border-radius: 4px;
