@@ -33,7 +33,7 @@
     Country:<input type="text" name="country" id="country" size="12" onblur="validateCountry()" value="United States">
     <span id="c2error"> </span><br><br>
     <input type="button" value="Return to Cart" onclick="window.location.href='http://localhost/cart/page2.php'"> 
-    <button type="submit"> Finalize Order button </button>
+    <button type="submit"> Finalize Order</button>
     <input type="reset">
   </form>
 </body>
