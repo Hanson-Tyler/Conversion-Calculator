@@ -1,14 +1,16 @@
 <?php
 session_start();
+
+  $_SESSION["picked"] = $_POST["games"];
 ?>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <base href="C:\Bitnami\wappstack-5.6.31-0\apache2\htdocs\">
+    
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>CS 213 Week 07 Ponder and Prove</title>
-    <link href="week07.css" type="text/css" rel="stylesheet">
-    <script type="text/javascript" src="week07.js?_&amp;d2lSessionVal=kU8r1uIwetqXoBqWnZPboOoDr"></script>
+    <link href="cart.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="cart.js?_&amp;d2lSessionVal=kU8r1uIwetqXoBqWnZPboOoDr"></script>
   
   </head>
   
@@ -18,11 +20,11 @@ session_start();
   <h2>Special Promoton! Free shipping on orders over $100!<br>
     Flat rate of $15 for shipping otherwise</h2>
   <h2>Please choose items for your order</h2>
-  <form action="page2.php" id="items" method="post">
+  <form action="page1.php" id="items" method="post">
     <table>
       <tr>
         <td>
-          <input type="checkbox" name="games[]" name="Settlers of Catan">
+          <input type="checkbox" name="games[]" value="Settlers of Catan">
         </td>
         <td> 
           <img src="catan.jpg" alt="Catan" width="150px" height="150px">
@@ -32,7 +34,7 @@ session_start();
 
       <tr>
         <td>
-          <input type="checkbox" name="games[]" name="Settlers of Catan:Cities and Knights" >
+          <input type="checkbox" name="games[]" value="Settlers of Catan:Cities and Knights" >
         </td>
         <td>
           <img src="cities.jpg" alt="Catan:Cities and Knights" width="150px" height="150px">
@@ -42,7 +44,7 @@ session_start();
 
       <tr>
         <td>
-          <input type="checkbox" name="games[]" name="Agricola">
+          <input type="checkbox" name="games[]" value="Agricola">
         </td>
         <td>
           <img src="agricola.jpg" alt="Agricola" width="150px" height="150px">
@@ -52,7 +54,7 @@ session_start();
 
       <tr>
         <td>
-          <input type="checkbox" name="games[]" name="Betrayal at House on the Hill">
+          <input type="checkbox" name="games[]" value="Betrayal at House on the Hill">
         </td>
         <td>
           <img src="betrayal.jpg" alt="Betrayal at House on the Hill" width="150px" height="150px">
@@ -62,7 +64,7 @@ session_start();
 
       <tr>
         <td>
-          <input type="checkbox" name="games[]" name="Pillars of the Earth">
+          <input type="checkbox" name="games[]" value="Pillars of the Earth">
         </td>
         <td>
           <img src="pillars.jpg" alt="Pillars of the Earth" width="150px" height="150px">
@@ -72,7 +74,7 @@ session_start();
 
       <tr>
         <td>
-          <input type="checkbox" name="games[]" name="Shadow Hunters">
+          <input type="checkbox" name="games[]" value="Shadow Hunters">
         </td>
         <td>
           <img src="shadow.jpg" alt="Shadow Hunters" width="150px" height="150px">
@@ -82,7 +84,7 @@ session_start();
 
       <tr>
         <td>
-          <input type="checkbox" name="games[]" name="Panic Station">
+          <input type="checkbox" name="games[]" value="Panic Station">
         </td>
         <td>
           <img src="panic.jpg" alt="Panic Station" width="150px" height="150px">
@@ -92,7 +94,7 @@ session_start();
 
       <tr>
         <td>
-          <input type="checkbox" name="games[]" name="Trajan">
+          <input type="checkbox" name="games[]" value="Trajan">
         </td>
         <td>
           <img src="trajan.jpg" alt="Trajan" width="150px" height="150px">
@@ -102,7 +104,7 @@ session_start();
 
       <tr>
         <td>
-          <input type="checkbox" name="games[]" name="Amerigo">
+          <input type="checkbox" name="games[]" value="Amerigo">
         </td>
         <td>
           <img src="amerigo.jpg" alt="Amerigo" width="150px" height="150px">
@@ -112,7 +114,7 @@ session_start();
 
       <tr>
         <td>
-          <input type="checkbox" name="games[]" name="7 Wonders">
+          <input type="checkbox" name="games[]" value="7 Wonders">
         </td>
         <td>
           <img src="wonders.jpg" alt="wonders" width="150px" height="150px" >
@@ -120,11 +122,12 @@ session_start();
         </td> 
       </tr> 
     </table>   
-    <button type="submit">Add Items To Cart </button>   
+    <button type="submit" name="submit">Add Items To Cart </button>
+    <input type="button" value="View Cart" onclick="window.location.href='http://localhost/cart/page2.php'"> 
   </form>
 
 <?php
-  $_SESSION["picked"] = "games";
+
 ?>
 
 </body>
