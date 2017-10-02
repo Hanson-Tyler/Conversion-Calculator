@@ -1,0 +1,22 @@
+body{
+	background-image: url("games.jpg");
+    background-size: 2000px 1000px;
+	color: Salmon;
+}
+
+form, pre {
+	margin-left: 25%;
+	margin-right:25%;
+	width: 50%;
+    font-size: 12; 
+    border: 1px solid rgb(0, 90, 136); 
+    border-radius: 4px;
+    background-color: DarkRed
+}
+
+h1, h2 {
+	text-align: center;
+    border-bottom-style: solid;
+    color: Salmon;
+    background-color: DarkRed
+}
