@@ -1,7 +1,8 @@
 <?php
 session_start();
 
-$dbopts = parse_url(getenv('DATABASE_URL'));
+$db = NULL;
+$db = parse_url(getenv('DATABASE_URL'));
 $app->register(new Herrera\Pdo\PdoServiceProvider(),
                array(
                    'pdo.dsn' => 'pgsql:dbname='.ltrim($dbopts["path"],'/').';host='.$dbopts["host"] . ';port=' . $dbopts["port"],
@@ -9,6 +10,8 @@ $app->register(new Herrera\Pdo\PdoServiceProvider(),
                    'pdo.password' => $dbopts["pass"]
                )
 );
+
+$db = pg_connect("host=localhost dbname=postgres user=postgres password=$password");
 
 $uname = $_POST['uname'];
 $pass = $_POST['pass'];
