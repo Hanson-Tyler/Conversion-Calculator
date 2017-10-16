@@ -16,7 +16,7 @@ $db = pg_connect("host=localhost dbname=postgres user=postgres password=$passwor
 $uname = $_POST['uname'];
 $pass = $_POST['pass'];
 $uid;
-
+ 
 try
 {
 	// Create the PDO connection
