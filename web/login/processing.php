@@ -1,22 +1,14 @@
 <?php
 session_start();
 
-$dbUrl = getenv('DATABASE_URL');
-
-if (empty($dbUrl)) {
- // example localhost configuration URL with postgres username and a database called cs313db
- $dbUrl = "postgres://postgres:password@localhost:5432/login";
-}
-
-$dbopts = parse_url($dbUrl);
-
-print "<p>$dbUrl</p>\n\n";
-
-$dbUser = 'postgres';
-$dbPassword = 'hoitoru123';
-$dbName = 'postgres';
-$dbHost = 'localhost';
-$dbPort = '5432';
+$dbopts = parse_url(getenv('DATABASE_URL'));
+$app->register(new Herrera\Pdo\PdoServiceProvider(),
+               array(
+                   'pdo.dsn' => 'pgsql:dbname='.ltrim($dbopts["path"],'/').';host='.$dbopts["host"] . ';port=' . $dbopts["port"],
+                   'pdo.username' => $dbopts["user"],
+                   'pdo.password' => $dbopts["pass"]
+               )
+);
 
 $uname = $_POST['uname'];
 $pass = $_POST['pass'];
