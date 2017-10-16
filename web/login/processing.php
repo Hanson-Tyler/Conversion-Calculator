@@ -1,6 +1,15 @@
 <?php
 session_start();
 
+
+
+$uname = $_POST['uname'];
+$pass = $_POST['pass'];
+$uid;
+ 
+try
+{
+
 $db = NULL;
 $db = parse_url(getenv('DATABASE_URL'));
 $app->register(new Herrera\Pdo\PdoServiceProvider(),
@@ -11,16 +20,8 @@ $app->register(new Herrera\Pdo\PdoServiceProvider(),
                )
 );
 
-$db = pg_connect("host=localhost dbname=postgres user=postgres password=$password");
-
-$uname = $_POST['uname'];
-$pass = $_POST['pass'];
-$uid;
- 
-try
-{
 	// Create the PDO connection
-	$db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword);
+	$db = pg_connect("host=localhost dbname=postgres user=postgres password=$password");;
 	// this line makes PDO give us an exception when there are problems, and can be very helpful in debugging!
 	$db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 }
