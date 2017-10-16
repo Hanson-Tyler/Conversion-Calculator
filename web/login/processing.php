@@ -1,7 +1,18 @@
 <?php
 session_start();
 
-
+  // default Heroku Postgres configuration URL
+  $dbUrl = getenv('DATABASE_URL');
+  if (empty($dbUrl)) {
+   // example localhost configuration URL with postgres username and a database called cs313db
+   $dbUrl = "postgres://postgres:hoitoru123@localhost:5432/postgres";
+  }
+  $dbopts = parse_url($dbUrl);
+  $dbHost = $dbopts["host"];
+  $dbPort = $dbopts["port"];
+  $dbUser = $dbopts["user"];
+  $dbPassword = $dbopts["pass"];
+  $dbName = ltrim($dbopts["path"],'/');
 
 $uname = $_POST['uname'];
 $pass = $_POST['pass'];
@@ -9,19 +20,8 @@ $uid;
  
 try
 {
-
-$db = NULL;
-$db = parse_url(getenv('DATABASE_URL'));
-$app->register(new Herrera\Pdo\PdoServiceProvider(),
-               array(
-                   'pdo.dsn' => 'pgsql:dbname='.ltrim($dbopts["path"],'/').';host='.$dbopts["host"] . ';port=' . $dbopts["port"],
-                   'pdo.username' => $dbopts["user"],
-                   'pdo.password' => $dbopts["pass"]
-               )
-);
-
 	// Create the PDO connection
-	$db = pg_connect("host=localhost dbname=postgres user=postgres password=$password");;
+	$db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword);
 	// this line makes PDO give us an exception when there are problems, and can be very helpful in debugging!
 	$db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 }
