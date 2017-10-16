@@ -14,7 +14,7 @@ print "<p>$dbUrl</p>\n\n";
 
 $dbUser = 'postgres';
 $dbPassword = 'hoitoru123';
-$dbName = 'login';
+$dbName = 'postgres';
 $dbHost = 'localhost';
 $dbPort = '5432';
 
