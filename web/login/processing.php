@@ -1,23 +1,28 @@
 <?php
 session_start();
 
-  // default Heroku Postgres configuration URL
-  $dbUrl = getenv('DATABASE_URL');
-  if (empty($dbUrl)) {
-   // example localhost configuration URL with postgres username and a database called cs313db
-   $dbUrl = "postgres://postgres:hoitoru123@localhost:5432/postgres";
-  }
-  $dbopts = parse_url($dbUrl);
-  $dbHost = $dbopts["host"];
-  $dbPort = $dbopts["port"];
-  $dbUser = $dbopts["user"];
-  $dbPassword = $dbopts["pass"];
-  $dbName = ltrim($dbopts["path"],'/');
+$dbUrl = getenv('DATABASE_URL');
+
+if (empty($dbUrl)) {
+ // example localhost configuration URL with postgres username and a database called cs313db
+ $dbUrl = "postgres://postgres:password@localhost:5432/login";
+}
+
+$dbopts = parse_url($dbUrl);
+
+print "<p>$dbUrl</p>\n\n";
+
+$dbUser = 'postgres';
+$dbPassword = 'hoitoru123';
+$dbName = 'login';
+$dbHost = 'localhost';
+$dbPort = '5432';
 
 $uname = $_POST['uname'];
 $pass = $_POST['pass'];
+$_SESSION['uname'] = $uname;
 $uid;
- 
+
 try
 {
 	// Create the PDO connection
@@ -33,19 +38,32 @@ catch (PDOException $ex)
 	die();
 }
 
+	$query = 'SELECT * FROM users';
+	$statement = $db->prepare($query);
+	$statement->execute();
+	while ($row = $statement->fetch(PDO::FETCH_ASSOC))
+	{
+		if($row['username'] == $uname)
+		{
+
+			header("location:registrationerror.php");
+		}
+	}
+
 	//Username validation
 	$statement = $db->query("SELECT id, username, password FROM users WHERE username= '$uname'");
 
 	while ($row = $statement->fetch(PDO::FETCH_ASSOC))
 	{
-		if($pass != $row['pass'])
+		echo 'password is ' . $pass . 'and the databse password is ' . $row['password'];
+		if($pass != $row['password'])
 		{
 			header("location:indexerror.php");
 		}
 		$_SESSION["pass"] = $row['password'];
-		$uid = $row['id'];		
+		$uid = $row['id'];	
 	}
-
+	
 	$statement = $db->prepare("SELECT * FROM name WHERE user_id = $uid");
 	$statement->execute();
 
@@ -76,6 +94,7 @@ catch (PDOException $ex)
 		$_SESSION['zip'] = $row['zip'];
 	}
 
+$_SESSION["userId"] = $uid;	
 header("location:profile.php");
 ?>
 </body>

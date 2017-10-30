@@ -11,7 +11,7 @@
 <body>
 
 <?php
-	echo '<form><header>Personal Information </header>';
+	echo '<form action="updateregistration.php"><header>Personal Information for: ' . $_SESSION['uname'] . '</header>';
 	echo '<label> First Name: </label>' . $_SESSION["first"] . '<br>';
 	echo '<label> Last Name: </label>' . $_SESSION["last"] . '<br>';
 	echo '<label> Phone Number: </label>' . $_SESSION["pnumber"] . '<br>';
@@ -21,8 +21,10 @@
 	echo '<label> State: </label>' . $_SESSION["state"] . '<br>';
 	echo '<label> Country: </label>' . $_SESSION["country"] . '<br>';
 	echo '<label> Zip: </label>' . $_SESSION["zip"] . '<br>';
+	echo '<button type="submit" name="submit">Update Information</button>';
 	echo '</form>';
 ?>
+
 
 </body>
 </html>
