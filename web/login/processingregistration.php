@@ -1,22 +1,27 @@
 <?php
 session_start();
 
-$dbUrl = getenv('DATABASE_URL');
+  $dbUrl = getenv('DATABASE_URL');
+  if (empty($dbUrl)) {
+    // example localhost configuration URL with postgres username and a database called cs313db
+    $dbUrl = "postgres://postgres:090189Tn@localhost:5432/postgres";
+  }
+  $dbopts = parse_url($dbUrl);
+  $dbHost = $dbopts["host"];
+  $dbPort = $dbopts["port"];
+  $dbUser = $dbopts["user"];
+  $dbPassword = $dbopts["pass"];
+  $dbName = ltrim($dbopts["path"],'/');
+  try {
+    $db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword);
+    $db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  }
+  catch (PDOException $ex) {
+    $errorMessage = "There are no quotes to display.";
+    include __DIR__ . '/../errors/index.php';
+  }
 
-if (empty($dbUrl)) {
- // example localhost configuration URL with postgres username and a database called cs313db
- $dbUrl = "postgres://postgres:password@localhost:5432/login";
-}
-
-$dbopts = parse_url($dbUrl);
-
-print "<p>$dbUrl</p>\n\n";
-
-$dbUser = 'postgres';
-$dbPassword = 'hoitoru123';
-$dbName = 'login';
-$dbHost = 'localhost';
-$dbPort = '5432';
 
 $uname = $_POST['newuname'];
 $pass = $_POST['newpass'];
