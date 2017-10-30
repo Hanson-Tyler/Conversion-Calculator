@@ -12,16 +12,6 @@ session_start();
   $dbUser = $dbopts["user"];
   $dbPassword = $dbopts["pass"];
   $dbName = ltrim($dbopts["path"],'/');
-  try {
-    $db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword);
-    $db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-  }
-  catch (PDOException $ex) {
-    $errorMessage = "There are no quotes to display.";
-    include __DIR__ . '/../errors/index.php';
-  }
-
 
 $uname = $_POST['newuname'];
 $pass = $_POST['newpass'];
