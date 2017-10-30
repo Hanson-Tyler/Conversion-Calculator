@@ -1,30 +1,17 @@
 <?php
 session_start();
 
-  $dbUrl = getenv('DATABASE_URL');
-  if (empty($dbUrl)) {
-    // example localhost configuration URL with postgres username and a database called cs313db
-    $dbUrl = "postgres://postgres:hoitoru123@localhost:5432/postgres";
-  }
-  $dbopts = parse_url($dbUrl);
-  $dbHost = $dbopts["host"];
-  $dbPort = $dbopts["port"];
-  $dbUser = $dbopts["user"];
-  $dbPassword = $dbopts["pass"];
-  $dbName = ltrim($dbopts["path"],'/');
-
-$uname = $_POST['newuname'];
-$pass = $_POST['newpass'];
-$fname = $_POST['newfname'];
-$lname = $_POST['newlname'];
-$pnum = $_POST['newpnumber'];
-$snum = $_POST['newsnumber'];
-$sname = $_POST['newsname'];
-$city = $_POST['newcity'];
-$state = $_POST['newstate'];
-$country = $_POST['newcountry'];
-$zip = $_POST['newzip'];
-
+$dbUrl = getenv('DATABASE_URL');
+if (empty($dbUrl)) {
+  // example localhost configuration URL with postgres username and a database called cs313db
+  $dbUrl = "postgres://postgres:hoitoru123@localhost:5432/postgres";
+}
+$dbopts = parse_url($dbUrl);
+$dbHost = $dbopts["host"];
+$dbPort = $dbopts["port"];
+$dbUser = $dbopts["user"];
+$dbPassword = $dbopts["pass"];
+$dbName = ltrim($dbopts["path"],'/');
 
 try
 {
@@ -41,17 +28,21 @@ catch (PDOException $ex)
 	die();
 }
 
-	$query = 'SELECT * FROM users';
-	$statement = $db->prepare($query);
-	$statement->execute();
-	while ($row = $statement->fetch(PDO::FETCH_ASSOC))
-	{
-		if($row['username'] == $uname)
-		{
 
-			header("location:registrationerror.php");
-		}
-	}
+
+$uname = $_POST['newuname'];
+$pass = $_POST['newpass'];
+$fname = $_POST['newfname'];
+$lname = $_POST['newlname'];
+$pnum = $_POST['newpnumber'];
+$snum = $_POST['newsnumber'];
+$sname = $_POST['newsname'];
+$city = $_POST['newcity'];
+$state = $_POST['newstate'];
+$country = $_POST['newcountry'];
+$zip = $_POST['newzip'];
+
+
 
 	
 	$query = 'INSERT INTO users (username, password) VALUES(:username, :password)';
