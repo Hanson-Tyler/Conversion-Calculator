@@ -46,13 +46,18 @@ catch (PDOException $ex)
 	$query = 'SELECT * FROM users';
 	$statement = $db->prepare($query);
 	$statement->execute();
+	$count = 0;
 	while ($row = $statement->fetch(PDO::FETCH_ASSOC))
 	{
 		if($row['username'] == $uname)
 		{
-
-			header("location:registrationerror.php");
+			$count++;
 		}
+	}
+
+	if($count != 0)
+	{
+		header("location:registrationerror.php");
 	}
 
 	//Username validation
