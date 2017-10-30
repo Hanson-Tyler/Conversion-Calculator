@@ -54,7 +54,7 @@ catch (PDOException $ex)
 	}
 
 	
-	$query = 'INSERT INTO users(username, password) VALUES(:username, :password)';
+	$query = 'INSERT INTO users (username, password) VALUES(:username, :password)';
 	$statement = $db->prepare($query);
 	$statement->bindValue(':username', $uname);
 	$statement->bindValue(':password', $pass);
@@ -63,7 +63,7 @@ catch (PDOException $ex)
 	$userId = $db->lastInsertId("users_id_seq");
 	
 
-	$query = 'INSERT INTO name(first, last, user_id) VALUES(:first, :last, :user_id)';
+	$query = 'INSERT INTO name (first, last, user_id) VALUES(:first, :last, :user_id)';
 	$statement = $db->prepare($query);
 	
 	$statement->bindValue(':first', $fname);
@@ -71,14 +71,14 @@ catch (PDOException $ex)
 	$statement->bindValue(':user_id', $userId);
 	$statement->execute();
 
-	$query = 'INSERT INTO phone(pnumber, user_id) VALUES(:pnumber, :user_id)';
+	$query = 'INSERT INTO phone (pnumber, user_id) VALUES(:pnumber, :user_id)';
 	$statement = $db->prepare($query);
 	
 	$statement->bindValue(':pnumber', $pnum);
 	$statement->bindValue(':user_id', $userId);
 	$statement->execute();
 
-	$query = 'INSERT INTO address(snumber, sname, city, state, country, zip, user_id) VALUES(:snumber, :sname, :city, :state, :country, :zip, :user_id)';
+	$query = 'INSERT INTO address (snumber, sname, city, state, country, zip, user_id) VALUES(:snumber, :sname, :city, :state, :country, :zip, :user_id)';
 	$statement = $db->prepare($query);
 	
 	$statement->bindValue(':snumber', $snum);
