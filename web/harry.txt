@@ -1,1 +1,1 @@
-{"firstname":"Harry", "lastname": "Potter", "age":"17", "wand":"pheonix", "house":"Gryffindor"}
+{"firstname": "Harry", "lastname": "Potter", "age": "17", "wand": "pheonix", "house": "Gryffindor"}
