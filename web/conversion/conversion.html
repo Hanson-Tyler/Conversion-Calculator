@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="conversion.css">
+	<script type="text/javascript" src="conversion.js?_&amp;d2lSessionVal=kU8r1uIwetqXoBqWnZPboOoDr"></script>
+</head>
+<body>
+
+<div id="first" onchange="fadeIn('second')">
+	<span> Select the Currency to convert from: </span></br>
+
+	<select id="firstType" name="first">
+	  <option value="default">Choose One</option>	
+	  <option value="US Dollar">US Dollar</option>
+ 	  <option value="Euro">Euro</option>
+  	  <option value="British Pound">British Pound</option>
+  	  <option value="Indian Rupee">Indian Rupee</option>
+	  <option value="Australian Dollar">Australian Dollar</option>
+ 	  <option value="Canadian Dollar">Canadian Dollar</option>
+  	  <option value="Singapore Dollar">Singapore Dollar</option>
+  	  <option value="Swiss Franc">Swiss Franc</option>
+  	  <option value="Malaysian Ringgit">Malaysian Ringgit</option>
+ 	  <option value="Japanese Yen">Japanese Yen</option>
+  	  <option value="Chinese Yuan Renminbi">Chinese Yuan Renminbi</option>	  
+	</select>
+</div>
+</br></br>
+<div id="second" class="opaque" onchange="fadeIn('third')">
+	<span> Select the Currency to convert to: </span></br>
+
+	<select id="secondType" name="second">
+	  <option value="default">Choose One</option>	
+	  <option value="US Dollar">US Dollar</option>
+ 	  <option value="Euro">Euro</option>
+  	  <option value="British Pound">British Pound</option>
+  	  <option value="Indian Rupee">Indian Rupee</option>
+	  <option value="Australian Dollar">Australian Dollar</option>
+ 	  <option value="Canadian Dollar">Canadian Dollar</option>
+  	  <option value="Singapore Dollar">Singapore Dollar</option>
+  	  <option value="Swiss Franc">Swiss Franc</option>
+  	  <option value="Malaysian Ringgit">Malaysian Ringgit</option>
+ 	  <option value="Japanese Yen">Japanese Yen</option>
+  	  <option value="Chinese Yuan Renminbi">Chinese Yuan Renminbi</option>		  
+	</select>
+</div>
+</br></br>
+<div id="third" name="third" class="opaque">
+	<span>Enter amount of the first currency to convert to the second:</span></br>
+	<input id="value" type="number"></br>
+	<button type="button" onclick="calculateConversion('results')">Convert</button>
+</div>
+</br></br></br></br>
+<div id="results" name="results" class="opaque">
+	<span id="title"></span></br>
+	<span id="amount"></span>
+</div>
+
+</body>
+</html>

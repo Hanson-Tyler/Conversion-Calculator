@@ -1,0 +1,88 @@
+@keyframes fadeInFromNone {
+    0% {
+        display: none;
+        opacity: 0;
+    }
+
+    1% {
+        display: block;
+        opacity: 0;
+    }
+
+    100% {
+        display: block;
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInFromNoneResults {
+    0% {
+        display: none;
+        opacity: 0;
+    }
+
+    1% {
+        display: block;
+        opacity: 0;
+    }
+
+    50% {
+        opacity: .5;
+
+    }
+
+
+    100% {
+        display: block;
+        opacity: 1;
+
+    }
+}
+
+.fade{
+    animation-name: fadeInFromNone;
+    animation-duration: 4s;
+}
+
+.fadeResults{
+    animation-name: fadeInFromNoneResults;
+    animation-duration: 2s;
+    transform:rotate(360deg) scale(2);
+}
+
+.opaque{
+	opacity:0;
+}
+
+body{
+	background-color: gray;
+}
+
+div{
+	text-align: center;
+	margin-left: 40%;
+    background-color: red;
+    display: inline-block;
+	transition: transform 1s;
+}
+
+#third{
+	margin-left: 35%;
+}
+
+#results{
+	transition:transform 2s, ;
+}
+
+h1{
+	text-align: center;
+}
+
+h2{
+	padding-top: 80px;
+	text-align: center;
+}
+
+a{
+	text-align: center;
+}
